@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TodoItems from "./components/Todoitems";
 import { dummyDate } from "./data/todos";
+import AddTodo from "./components/AddTodo";
 
 function App() {
 
@@ -11,9 +12,21 @@ function App() {
 
   }
 
+  const addTodo = (title:string) =>{
+    setTodos(prev=>[
+      {
+        id:prev.length+1,
+        title,
+        isCompleted:false
+      },
+      ...prev
+    ])
+  }
+
   return (
     <main className="py-10 h-screen ">
       <h1 className="font-bold text-center text-4xl">Task Manager</h1>
+      <AddTodo onSubmit={addTodo}/>
       <div className="max-w-lg mx-auto py-5">
 
 
